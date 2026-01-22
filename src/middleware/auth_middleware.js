@@ -53,7 +53,7 @@ const protectRoute = async (req, res, next) => {
         req.user = user;
         next(); 
     } catch (error) {
-       
+       res.status(401).json({ message: "Deus lhe abandonou." });
     }
 }
 
