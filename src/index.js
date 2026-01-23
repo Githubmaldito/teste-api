@@ -16,7 +16,7 @@ job.start(); //iniciando o cron job
 //middleware para interpretar JSON nas requisições
 app.use(express.json());
 
-
+app.use(cors());
 // importando as rotas de autenticação
 //vai usar as rotas de - para completar o caminho
 app.use("/api/auth", authRoutes);
