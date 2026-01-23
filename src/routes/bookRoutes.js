@@ -32,7 +32,7 @@ router.post("/", protectRoute, async (req, res) => {
         res.status(201).json(livro)
 
     } catch (error) {
-        console.log("Algo deu errado ao criar o livro)
+        console.log("Algo deu errado ao criar o livro")
         res.status(500).json({message: error.message})
     }
 });
