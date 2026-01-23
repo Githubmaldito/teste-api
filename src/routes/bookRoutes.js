@@ -27,14 +27,13 @@ router.post("/", protectRoute, async (req, res) => {
             rating,
             image: imageUrl,
         });
-//ai nao po
-        await newLivro.save();
-        // await livro.save();
-        // res.status(201).json(livro)
+
+        livro.save();
+        res.status(201).json(livro);
 
     } catch (error) {
-        // console.log("Algo deu errado ao criar o livro")
-        // res.status(500).json({message: error.message})
+        console.log("Algo deu errado ao criar o livro")
+        res.status(500).json({message: "o erro ocorreu aqui"})
     }
 });
 
