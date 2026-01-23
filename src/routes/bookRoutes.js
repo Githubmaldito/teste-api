@@ -20,7 +20,7 @@ router.post("/", protectRoute, async (req, res) => {
         const imageUrl = upload.secure_url;
 
         //criar o novo livro
-        const livro = new Livro({
+        const newLivro = new Livro({
             user: req.user._id,
             title,
             description,
@@ -28,11 +28,11 @@ router.post("/", protectRoute, async (req, res) => {
             image: imageUrl,
         });
 
-        livro.save();
-        res.status(201).json(livro);
+        await newLivro.save();
+        res.status(201).json(newLivro);
 
     } catch (error) {
-        console.log("Algo deu errado ao criar o livro")
+        console.log("Algo deu errado ao criar o livro", error)
         res.status(500).json({message: "o erro ocorreu aqui"})
     }
 });
