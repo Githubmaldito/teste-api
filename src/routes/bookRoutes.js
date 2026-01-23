@@ -28,6 +28,8 @@ router.post("/", protectRoute, async (req, res) => {
             image: imageUrl,
         });
 
+        await newLivro.save();
+
     } catch (error) {
         
     }
@@ -100,11 +102,11 @@ router.delete("/:id", protectRoute, async (req, res) => {
 //https://res.cloudinary.com/dy3n0mzzd/image/upload/v1695768283/abc123.jpg
 
 // excluir a imagem do Cloudinary
-        if(livro.imagem && livro.imagem.includes("res.cloudinary.com")){
+        if(livro.image && livro.image.includes("res.cloudinary.com")){
             try {//extrai o public_id da URL da imagem
                 //split divide a string em partes
                 //pega a última parte da URL (nome do arquivo com extensão)
-                const publicId = livro.imagem.split("/").pop().split(".")[0];
+                const publicId = livro.image.split("/").pop().split(".")[0];
                 await cloudinary.uploader.destroy(publicId);
             } catch (deleteError) {
                 console.log("Erro ao deletar imagem do Cloudinary:", deleteError);
