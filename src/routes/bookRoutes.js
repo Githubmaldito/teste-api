@@ -28,8 +28,8 @@ router.post("/", protectRoute, async (req, res) => {
             image: imageUrl,
         });
 //ai nao po
-        livro.save();
-        // res.status(201).json(livro)
+        await livro.save();
+        res.status(201).json(livro)
 
     } catch (error) {
         // console.log("Algo deu errado ao criar o livro")
