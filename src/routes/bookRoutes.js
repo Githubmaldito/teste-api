@@ -20,7 +20,7 @@ router.post("/", protectRoute, async (req, res) => {
         const imageUrl = upload.secure_url;
 
         //criar o novo livro
-        const newLivro = new Livro({
+        const livro = new Livro({
             user: req.user._id,
             title,
             description,
@@ -28,7 +28,7 @@ router.post("/", protectRoute, async (req, res) => {
             image: imageUrl,
         });
 
-        await newLivro.save();
+        await livro.save();
         // res.status(201).json(newLivro);
         res.status(201).json({
           success: true,
