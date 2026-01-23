@@ -10,7 +10,7 @@ const livroSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    nota:{
+    rating:{
         type: Number,
         required: true,
         min: 1,
