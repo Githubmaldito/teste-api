@@ -28,7 +28,7 @@ router.post("/", protectRoute, async (req, res) => {
             image: imageUrl,
         });
 
-        await newLivro.save();
+        await livro.save();
 
     } catch (error) {
         
