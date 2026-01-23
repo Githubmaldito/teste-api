@@ -16,8 +16,8 @@ router.post("/", protectRoute, async (req, res) => {
 
         }
             //upar a imagem para o Cloudinary
-        const upload = await cloudinary.uploader.upload(imagem)
-        const imagemUrl = upload.secure_url;
+        const upload = await cloudinary.uploader.upload(image)
+        const imageUrl = upload.secure_url;
 
         //criar o novo livro
         const livro = new Livro({
@@ -25,7 +25,7 @@ router.post("/", protectRoute, async (req, res) => {
             title,
             description,
             rating,
-            image: imagemUrl,
+            image: imageUrl,
         });
 
     } catch (error) {
