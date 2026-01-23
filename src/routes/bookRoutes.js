@@ -29,12 +29,7 @@ router.post("/", protectRoute, async (req, res) => {
         });
 
         await livro.save();
-        // res.status(201).json(newLivro);
-        res.status(201).json({
-          success: true,
-          message: "Livro criado com sucesso!",
-          livro: livro.toJSON()
-        });
+        res.status(201).json(livro);
 
     } catch (error) {
         console.log("Algo deu errado ao criar o livro", error)
