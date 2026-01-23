@@ -33,7 +33,7 @@ router.post("/", protectRoute, async (req, res) => {
         res.status(201).json({
           success: true,
           message: "Livro criado com sucesso!",
-          livro: livro.toObject() // ou livro.toJSON()
+          livro: livro.toJSON()
         });
 
     } catch (error) {
