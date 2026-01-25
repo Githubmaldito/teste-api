@@ -9,7 +9,7 @@ const router = express.Router();
 router.post("/", protectRoute, async (req, res) => {
 //antes, usa protectRoute para garantir que o usuário está autenticado
     try {
-        const {title, description, rating, image} = req.body;
+        const {user, title, description, rating, image} = req.body;
 
         if(!image || !title || !description || !rating){
             return res.status(400).json({ message: "Preencha todos os campos." });
@@ -28,11 +28,11 @@ router.post("/", protectRoute, async (req, res) => {
             image: imageUrl,
         });
 
-        await livro.save();
+        livro.save();
         res.status(201).json(livro);
 
     } catch (error) {
-        console.log("Algo deu errado ao criar o livro", error)
+        console.log("Algo deu errado ao criar o livro")
         res.status(500).json({message: "o erro ocorreu aqui"})
     }
 });
@@ -74,7 +74,7 @@ router.get("/user", protectRoute, async (req, res) => {
     try {
         const livros = await Livro.find({ user: req.user._id }).sort({ createdAt: -1 })
         .populate("user", "username profileImage");
-        res.json(livros);
+        // res.json(livros);
     } catch (error) {
         console.log("Erro ao obter livros do usuário:", error);
         res.status(500).json({ message: "Erro interno do servidor." });
