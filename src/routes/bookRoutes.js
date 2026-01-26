@@ -75,7 +75,7 @@ router.get("/user", protectRoute, async (req, res) => {
     try {
         const livros = await Livro.find({ user: req.user._id }).sort({ createdAt: -1 })
         .populate("user", "username profileImage");
-        // res.json(livros);
+        res.json(livros);
     } catch (error) {
         console.log("Erro ao obter livros do usuário:", error);
         res.status(500).json({ message: "Erro interno do servidor." });
