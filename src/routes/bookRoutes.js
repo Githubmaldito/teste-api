@@ -9,7 +9,8 @@ const router = express.Router();
 router.post("/", protectRoute, async (req, res) => {
 //antes, usa protectRoute para garantir que o usuário está autenticado
     try {
-        const {user, title, description, rating, image} = req.body;
+        // removendo user
+        const { title, description, rating, image} = req.body;
 
         if(!image || !title || !description || !rating){
             return res.status(400).json({ message: "Preencha todos os campos." });
