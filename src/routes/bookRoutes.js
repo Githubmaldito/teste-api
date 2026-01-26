@@ -71,6 +71,7 @@ router.get("/", protectRoute, async (req, res) => {
 // CASO HAJA UM PROBLEMA
 // VER AQUI
 // LEMBRAR!!!
+// O IMBECIL NAO LEMBROU PERDI UM DIA ESTOU QUASESLOEIJMFKAINF
 router.get("/user", protectRoute, async (req, res) => {
     try {
         const livros = await Livro.find({ user: req.user._id }).sort({ createdAt: -1 })
